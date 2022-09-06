@@ -1,0 +1,28 @@
+<%- include('./partials/head')  %> 
+<%- include('./partials/header')  %> 
+<body>
+    <ul>
+        <% results.forEach((item)=> { %> 
+            <li>
+                <h2>id: <%= item.id %></h2>
+                <h2><%= item.firstname %></h2>
+                <h5><%= item.lastname %></h5>
+            </li>
+            <hr>
+        <% }) %> 
+    </ul>
+    <div>
+        <form method="POST" action="/create" >
+            <label>Choose a Data to Store ON Database:</label>
+            <select name="data" required>
+                <option value="">Select</option>
+                <% results.forEach((item)=> { %> 
+                    <option value="<%= item.email %>|<%= item.firstname %>|<%= item.lastname %>"><%= item.firstname %></option>
+                <% }) %> 
+            </select>
+            <br>
+            <button type="submit">SAVE</button>
+        </form>
+    </div>
+</body>
+</html>
