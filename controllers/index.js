@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const connection = require('../models');
-
+// const dataSchema = require('../models/dataSchemaModel');
+const dataSchemaModel = require('../models/dataSchemaModel');
 
 // GET Routes
 router.get("/", (req, res) => {
@@ -37,10 +38,10 @@ router.post('/create', async (req, res) => {
     const obj = JSON.parse(JSON.stringify(req.body));
     
     const parseObj = obj.data;
-    const objArray = parseObj.split("|");
-
+    
     // Preparing Data Obj to Store on Local Database
-    const [ email, firstName, lastName ] = objArray;
+    const  dataReducer = new dataSchemaModel(parseObj);
+    const [ email, firstName, lastName ] = dataReducer.reducerSchema();
 
     try {
         connection.query(
