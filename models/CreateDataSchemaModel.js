@@ -10,7 +10,6 @@ function CreateDataConnection(email, firstName, lastName, req, res) {
                 console.log("Error while inserting into the database", err);
                 return res.status(400).send();
             }
-            return res.status(201).json({ message: `Successfully Created! email:${email} has been added!` })
         }
     )
 }

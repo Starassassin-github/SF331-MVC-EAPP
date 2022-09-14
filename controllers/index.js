@@ -10,9 +10,9 @@ const { dataQueryModel } = require('../models/QueryDataSchemaModel');
 
 
 // GET Routes
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
     try { 
-        dataQueryModel(req, res) 
+        dataQueryModel(req, res); 
     }
     catch (err) {
         console.log(err);
@@ -37,6 +37,7 @@ router.post('/create', async (req, res) => {
 
     try {
         CreateDataConnection(email, firstName, lastName, req, res);
+        return res.status(201).json({ message: `Successfully Created! email:${email} has been added!` })
         
     } catch (err) {
         console.log(err);
