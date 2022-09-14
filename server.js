@@ -1,8 +1,7 @@
 const express = require('express');
-const router = require('./controllers/index');
+const routerController = require('./controllers/index');
 
-
-require('./models');
+require('./db');
 
 const app = express();
 
@@ -10,7 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.use(express.json());
-app.use('/', router);
+app.use('/', routerController);
 
 
 

@@ -1,4 +1,4 @@
-class dataSchemaModel {
+class dataInputSchemaModel {
 
     constructor(data) {
         const objArray = data.split("|");
@@ -14,4 +14,4 @@ class dataSchemaModel {
 }
 
 
-module.exports = dataSchemaModel;
+module.exports = dataInputSchemaModel;
