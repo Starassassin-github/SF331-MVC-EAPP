@@ -12,7 +12,9 @@ const { dataQueryModel } = require('../models/QueryDataSchemaModel');
 // GET Routes
 router.get("/", (req, res) => {
     try { 
-        dataQueryModel(req, res); 
+    dataQueryModel(function(callback){
+        return res.render('../views/index.ejs', { results: callback })
+    }); 
     }
     catch (err) {
         console.log(err);
@@ -36,7 +38,11 @@ router.post('/create', async (req, res) => {
     const [email, firstName, lastName] = dataReducer.reducerSchema();
 
     try {
-        CreateDataConnection(email, firstName, lastName, req, res);
+        CreateDataConnection(email, firstName, lastName, function(callback){
+            if (callback == 'status400') {
+                return res.status(400).send();
+            }
+        });
         return res.status(201).json({ message: `Successfully Created! email:${email} has been added!` })
         
     } catch (err) {
