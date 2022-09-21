@@ -16,4 +16,4 @@ function CreateDataConnection(email, firstName, lastName, callback) {
 
 module.exports = {
     CreateDataConnection
-}
+};

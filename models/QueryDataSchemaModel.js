@@ -21,6 +21,6 @@ function dataQueryModel(callback) {
 
 module.exports = {
     dataQueryModel
-}
+};
 
 
